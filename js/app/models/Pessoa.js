@@ -1,3 +1,4 @@
+const QTD_MES_ANO = 12   
 class Pessoa {
     constructor(data, idade, salario) {
         this._dataNascimento = new Date(data.getTime());
@@ -8,22 +9,22 @@ class Pessoa {
         Object.freeze(this);
     }
 
-    //Encapsulamento
-    get volume() {        
-        return this._quantidade * this._valor;
-    }
-    
-    get data() {
+    //Encapsulamento  
+    get dataNascimento() {
         /**retorna uma nova referencia para evitar alteração do atributo através dos métodos que objeto Date possui,
          * tentando assim garantir o encapsulamento*/
         return new Date(this._dataNascimento.getTime());
     }
     
-    get quantidade() {
-        return this._quantidade;
+    get idade() {
+        return this._idade;
     }
     
-    get valor() {
-        return this._valor;
+    get salario() {
+        return this._salario;
+    }
+
+    get salarioAnual() {     
+        return this._salario * QTD_MES_ANO;
     }
 }

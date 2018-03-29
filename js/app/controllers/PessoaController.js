@@ -7,6 +7,8 @@ class PessoaController {
       this._inputDataNascimento = selector('#dataNascimento');
       this._inputIdade = selector('#idade');
       this._inputSalario = selector('#salario');
+
+      this._tbody = document.querySelector('table tbody');
     }
 
     /**
@@ -20,8 +22,24 @@ class PessoaController {
         this._inputIdade.value,
         this._inputSalario.value
       )
+      this.apresentaDados(pessoa);
     }
-    
+
+    /**
+     * Adiciona os dados no DOM na tabela de apresentação de dados
+     * @param {Pessoa} pessoa 
+     */
+    apresentaDados(pessoa){
+      let tr = document.createElement('tr');
+      let atributos = [pessoa.dataNascimento,pessoa.idade,pessoa.salario,pessoa.salarioAnual];
+      atributos.map((atributo) => {
+        let td = document.createElement('td');
+        td.textContent = atributo;
+        tr.appendChild(td);
+      })
+      this._tbody.appendChild(tr);
+    }
+  
     /**
      * recebe String formato yyyy-MM-dd e converte para Data
      * @param {string} data 
