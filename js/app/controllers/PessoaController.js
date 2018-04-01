@@ -10,6 +10,8 @@ class PessoaController {
       this._listaPessoas = [];
       this._pessoaView = new PessoaView(selector('#pessoaView'));
 
+      this._mensagem = new Mensagem();
+      this._mensagemView = new MensagemView(selector('#mensagem'));
     }
 
     /**
@@ -18,13 +20,21 @@ class PessoaController {
      */
     adiciona(event) {
       event.preventDefault();
-      this._listaPessoas.push(new Pessoa(
+      this._listaPessoas.push(this.criaPessoa());
+      this._mensagemView.update(this._mensagem.texto = "Cadastro realizado com sucesso!");
+      this._pessoaView.update(this._listaPessoas);
+      this.limpaFormulario();
+    }
+
+    /**
+     * cria Objeto do tipo Pessoa
+     */
+    criaPessoa(){
+      return new Pessoa(
         DateUtils.textToData(this._inputDataNascimento.value),
         this._inputIdade.value,
         this._inputSalario.value
-      ));
-      this._pessoaView.update(this._listaPessoas);
-      this.limpaFormulario();
+      )
     }
 
     /**

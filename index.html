@@ -10,7 +10,7 @@
 <body class="container">
     
     <h1 class="text-center">Cadastro</h1>
-    
+    <div id="mensagem"></div>
     <form class="form" onsubmit="pessoaController.adiciona(event)">
         
         <div class="form-group">
@@ -32,11 +32,16 @@
     
     <br>
     <div id="pessoaView"></div>
-
+    
+    <script src="js/app/view/AbstractView.js"></script>
     <script src="js/app/models/Pessoa.js"></script>
+    <script src="js/app/models/Mensagem.js"></script>
     <script src="js/app/controllers/PessoaController.js"></script>
     <script src="js/app/util/DateUtils.js"></script>
     <script src="js/app/view/PessoaView.js"></script>
+    <script src="js/app/view/MensagemView.js"></script>
+    
+    
     <script>
         let pessoaController = new PessoaController();
     </script>

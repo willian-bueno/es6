@@ -1,19 +1,7 @@
 /**
  * @author Willian Bueno
  */
-class PessoaView{
-
-    constructor(elemento) {
-        this._elemento = elemento;
-    }
-
-    /**
-     * Atualiza View
-     * @param {Array<Pessoa} listaPessoas 
-     */
-    update(listaPessoas){
-        this._elemento.innerHTML = this._template(listaPessoas);
-    }
+class PessoaView extends AbstractView{
 
     /**
      * cria tabela com os dados do array de pessoas
@@ -36,6 +24,12 @@ class PessoaView{
                     }).join('')
                 }
                 </tbody>
+                <tfoot>
+                    <td colspan="3"></td>
+                    <td>
+                        ${listaPessoas.reduce((total,pessoa) => total + pessoa.salarioAnual,0.0)}
+                    </td>
+                </tfoot>
             </table>`;
     }
 
