@@ -7,8 +7,9 @@ class PessoaController {
       this._inputDataNascimento = selector('#dataNascimento');
       this._inputIdade = selector('#idade');
       this._inputSalario = selector('#salario');
+      this._listaPessoas = [];
+      this._pessoaView = new PessoaView(selector('#pessoaView'));
 
-      this._tbody = document.querySelector('table tbody');
     }
 
     /**
@@ -17,35 +18,22 @@ class PessoaController {
      */
     adiciona(event) {
       event.preventDefault();
-      let pessoa = new Pessoa(
-        this.converteData(this._inputDataNascimento.value),
+      this._listaPessoas.push(new Pessoa(
+        DateUtils.textToData(this._inputDataNascimento.value),
         this._inputIdade.value,
         this._inputSalario.value
-      )
-      this.apresentaDados(pessoa);
+      ));
+      this._pessoaView.update(this._listaPessoas);
+      this.limpaFormulario();
     }
 
     /**
-     * Adiciona os dados no DOM na tabela de apresentação de dados
-     * @param {Pessoa} pessoa 
+     * Limpa formulario de cadastro de Pessoas
      */
-    apresentaDados(pessoa){
-      let tr = document.createElement('tr');
-      let atributos = [pessoa.dataNascimento,pessoa.idade,pessoa.salario,pessoa.salarioAnual];
-      atributos.map((atributo) => {
-        let td = document.createElement('td');
-        td.textContent = atributo;
-        tr.appendChild(td);
-      })
-      this._tbody.appendChild(tr);
-    }
-  
-    /**
-     * recebe String formato yyyy-MM-dd e converte para Data
-     * @param {string} data 
-     */
-    converteData(data){
-      console.log(data);
-      return new Date(data.replace(/-/g,','));
+    limpaFormulario(){
+      this._inputDataNascimento.value = ''
+      this._inputIdade.value = 1;
+      this._inputSalario.value = 0;
+      this._inputDataNascimento.focus();
     }
   }

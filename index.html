@@ -31,25 +31,12 @@
     </form>
     
     <br>
-    
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th>NASCIMENTO</th>
-                <th>IDADE</th>
-                <th>SALÁRIO</th>
-                <th>SALÁRIO ANUAL</th>
-            </tr>
-        </thead>
-        
-        <tbody>
-        </tbody>
-        
-        <tfoot>
-        </tfoot>
-    </table>
+    <div id="pessoaView"></div>
+
     <script src="js/app/models/Pessoa.js"></script>
     <script src="js/app/controllers/PessoaController.js"></script>
+    <script src="js/app/util/DateUtils.js"></script>
+    <script src="js/app/view/PessoaView.js"></script>
     <script>
         let pessoaController = new PessoaController();
     </script>

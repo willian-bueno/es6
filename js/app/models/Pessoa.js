@@ -1,10 +1,12 @@
+/**
+ * @author Willian Bueno
+ */
 const QTD_MES_ANO = 12   
 class Pessoa {
     constructor(data, idade, salario) {
         this._dataNascimento = new Date(data.getTime());
         this._idade = idade;
-        this._salario = idade;
-
+        this._salario = salario;
         //Congela referencia do objeto evitando alteração
         Object.freeze(this);
     }
