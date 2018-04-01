@@ -7,7 +7,7 @@ class PessoaView extends AbstractView{
      * cria tabela com os dados do array de pessoas
      * @param {Array<Pessoa>} listaPessoas 
      */
-    _template(listaPessoas) {
+    template(listaPessoas) {
         return `<table class="table table-hover table-bordered">
                 <thead>
                     <tr>
