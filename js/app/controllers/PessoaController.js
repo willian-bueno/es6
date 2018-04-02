@@ -10,7 +10,6 @@ class PessoaController {
       this._listaPessoas = [];
       this._pessoaView = new PessoaView(selector('#pessoaView'));
 
-      this._mensagem = new Mensagem();
       this._mensagemView = new MensagemView(selector('#mensagem'));
     }
 
@@ -21,9 +20,23 @@ class PessoaController {
     adiciona(event) {
       event.preventDefault();
       this._listaPessoas.push(this.criaPessoa());
-      this._mensagemView.update(this._mensagem.texto = "Cadastro realizado com sucesso!");
+      this._mensagemView.update("Cadastro realizado com sucesso!");
       this._pessoaView.update(this._listaPessoas);
       this.limpaFormulario();
+    }
+
+    /**
+     * Apaga todos registros cadastrados
+     */
+    apaga(){
+      if(this._listaPessoas.length > 0){
+        this._listaPessoas = [];
+        this._pessoaView.update(this._listaPessoas);
+        this._mensagemView.update("Pessoas apagadas com sucesso!");
+      }else{
+        this._mensagemView.update("Não possui registros para ser apagados!");
+      }
+      
     }
 
     /**

@@ -28,22 +28,28 @@
             <input id="salario" type="number" class="form-control"  min="0.01" step="0.01" value="0.0" required />
         </div>
         <button class="btn btn-success" type="submit">Incluir</button>
+        <button onclick="pessoaController.apaga()" class="btn btn-primary text-center" type="button" id="botaoApagar">Apagar todos registros</button>
     </form>
     
     <br>
     <div id="pessoaView"></div>
+
+    
     
     <script src="js/app/view/AbstractView.js"></script>
     <script src="js/app/models/Pessoa.js"></script>
-    <script src="js/app/models/Mensagem.js"></script>
     <script src="js/app/controllers/PessoaController.js"></script>
     <script src="js/app/util/DateUtils.js"></script>
     <script src="js/app/view/PessoaView.js"></script>
     <script src="js/app/view/MensagemView.js"></script>
+    <script src="js/app/reflect/A.js"></script>
+    <script src="js/app/reflect/B.js"></script>
+    
     
     
     <script>
         let pessoaController = new PessoaController();
+        new B("willian").apresentaMsg();
     </script>
 </body>
 </html>
